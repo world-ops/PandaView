@@ -35,7 +35,7 @@ public class MyRecyclerView extends AppCompatActivity {
 
         // specify an adapter
         mVideoInfos = new ArrayList<>();
-        myAdapter = new MyAdapter();
+        myAdapter = new MyAdapter(this);
 
         recyclerView.setAdapter(myAdapter);
 

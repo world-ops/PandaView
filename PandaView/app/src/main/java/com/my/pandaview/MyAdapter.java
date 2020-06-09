@@ -86,11 +86,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.videoView.setVideoPath(mDataset.get(position).feedurl);
         holder.videoView.setMediaController(new MediaController(mContext));
 
-        final Target<Bitmap> into = Glide.with(mContext)
-                .load(mDataset.get(position).feedurl)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .into(holder.vedioViewHead);
+
+//        final Target<Bitmap> into = Glide.with(mContext)
+//                .load(mDataset.get(position).feedurl)
+//                .asBitmap()
+//                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                .into(holder.vedioViewHead);
+
+        Glide.with(mContext).load(mDataset.get(position).avatar).into(holder.vedioViewHead);
 
         //设置点击事件，OnClickListener不好用
         holder.videoView.setOnTouchListener(new View.OnTouchListener() {
@@ -101,6 +104,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     //holder.btn_play.setVisibility(View.VISIBLE);
                 }else {
                     holder.videoView.start();
+                    holder.vedioViewHead.setVisibility(View.GONE);
                     //holder.btn_play.setVisibility(View.INVISIBLE);
                 }
                 return false;
@@ -136,7 +140,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // Return the size of your dataset ( invoked by the layout manager)
     @Override
     public int getItemCount() { return mDataset == null ? 0 : mDataset.size();}
-
+/*
     public static void loadVideoScreenshot(final Context context, String uri, ImageView imageView, long frameTimeMicros) {
 
         RequestOptions requestOptions = RequestOptions.frameOf(frameTimeMicros);
@@ -157,4 +161,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         });
         Glide.with(context).load(uri).apply(requestOptions).into(imageView);
     }
+*/
 }
+

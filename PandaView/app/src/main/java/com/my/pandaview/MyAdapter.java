@@ -60,21 +60,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             btn_pause=v.findViewById(R.id.btn_pause);
             btn_play=v.findViewById(R.id.btn_play);
             vedioViewHead=v.findViewById(R.id.videoViewHead);
-            //Drawable drawable=
 
         }
     }
 
+    // get data
     public void setData(List<VideoInfo> myDataset) { mDataset = myDataset; }
 
     //Create new views (invoked by the layout maneger)
-    @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_item, parent, false);
-        final MyViewHolder myViewHolder = new MyViewHolder(v);
-        return myViewHolder;
-    }
+@Override
+public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View v = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.my_item, parent, false);
+    final MyViewHolder myViewHolder = new MyViewHolder(v);
+    return myViewHolder;
+}
 
     @SuppressLint("ClickableViewAccessibility")
     @Override

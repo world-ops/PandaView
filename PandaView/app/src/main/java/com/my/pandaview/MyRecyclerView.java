@@ -43,14 +43,16 @@ public class MyRecyclerView extends AppCompatActivity {
     }
 
     private void getData() {
+        //创建Retrofit实例
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://beiyou.bytedance.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://beiyou.bytedance.com/")//设置网络请求的Url地址
+                .addConverterFactory(GsonConverterFactory.create())//设置数据解析器
                 .build();
 
+        //创建网络请求接口的实例
         ApiService apiService = retrofit.create(ApiService.class);
         apiService.getVideoInfos().enqueue(new Callback<List<VideoInfo>>() {
-
+            //请求成功时回调
             @Override
             public void onResponse(Call<List<VideoInfo>> call, Response<List<VideoInfo>> response) {
                 if (response.body() != null){
@@ -62,7 +64,7 @@ public class MyRecyclerView extends AppCompatActivity {
                     }
                 }
             }
-
+            //请求失败时回调
             @Override
             public void onFailure(Call<List<VideoInfo>> call, Throwable t) {
                 Log.d("retrofit fail", t.getMessage());
